@@ -7,6 +7,8 @@ class Home_Tree_Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double scw = MediaQuery.of(context).size.width;
+    double sch = MediaQuery.of(context).size.height;
     return MaterialApp(
       home: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -20,6 +22,35 @@ class Home_Tree_Page extends StatelessWidget {
             ),
           ),
           child: const _MyAppHpmPage(),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.black.withOpacity(0.8),
+          height: sch / 13,
+          child: InkWell(
+            onTap: () {
+              // ทำงานเมื่อกดที่พื้นที่ BottomAppBar
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.share),
+                  color: Colors.greenAccent,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Group_Tree_Page()),
+                    );
+                  },
+                ),
+                Text(
+                  "แชร์ข้อมูล",
+                  style: TextStyle(fontSize: 15, color: Colors.white),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -129,6 +160,11 @@ Widget bodyHome(double scw, double sch, BuildContext context) {
     } else {
       widgets.add(data_tree(scw, sch, BRButton, BDB));
     }
+    if (i == 30 - 1) {
+      widgets.add(SizedBox(
+        height: 30,
+      ));
+    }
   }
   return Column(
     children: widgets,
@@ -172,7 +208,7 @@ Widget data_tree(double scw, double sch, BorderRadius BRButton, Border BDB) {
           decoration: BoxDecoration(
               borderRadius: BRButton,
               border: BDB,
-              color: Colors.green.withOpacity(0.5)),
+              color: Colors.green.withOpacity(0.8)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
