@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../home_frist_page.dart';
 import '../Data_page/data_user_page.dart';
+import 'tree_page/home_tree_page.dart';
 // import 'package:flutter/services.dart';
 
 class Group_Tree_Page extends StatelessWidget {
@@ -115,7 +116,7 @@ Widget bodyHome(double scw, double sch, BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Heading(scw, sch),
-        Tree_Button(scw, sch, BRButton, BDB),
+        Tree_Button(scw, sch, BRButton, BDB, context),
         SizedBox(
           height: 30,
         ),
@@ -129,9 +130,13 @@ Widget bodyHome(double scw, double sch, BuildContext context) {
   );
 }
 
-Widget Tree_Button(double scw, double sch, BorderRadius BRButton, Border BDB) {
+Widget Tree_Button(double scw, double sch, BorderRadius BRButton, Border BDB,
+    BuildContext context) {
   return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const Home_Tree_Page()));
+      },
       child: Container(
           width: scw / 1.1,
           height: sch / 7,

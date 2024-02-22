@@ -112,12 +112,6 @@ Widget mail_password(double scw2, double sch2) {
                   contentPadding: EIText,
                   border: IBText,
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'กรุณากรอกชื่อผู้ใช้';
-                  }
-                  return null;
-                },
               ),
             ),
             const SizedBox(
